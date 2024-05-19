@@ -11,9 +11,9 @@ const movieRouter = express.Router()
 
 // Routes for movie
 movieRouter.get("/", getAllMovies)
-movieRouter.get("/movies/:id", getMovieById)
+movieRouter.get("/:id", getMovieById)
 movieRouter.post("/", addMovie)
-movieRouter.put("/movies/:id", updateMovie)
-movieRouter.delete("/movies/:id", deleteMovie);
+movieRouter.put("/:id", updateMovie)
+movieRouter.delete("/:id", deleteMovie);
 
 export default movieRouter;

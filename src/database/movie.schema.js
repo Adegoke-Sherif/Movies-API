@@ -23,11 +23,15 @@ const movieSchema = mongoose.Schema(
     totalRating: {
       type: Number
     },
+    releaseYear: {
+      type: Number,
+      required: [true, "Release Year is required field!"]
+    },
     createdAt: {
       type: Date,
-      default: Date.now
+      default: Date.now()
     }
-  },
+  }, 
   {
     timestamps: true
   }

@@ -3,8 +3,12 @@ import * as movieService from "../service/movieService.js";
 // Get all movies
 const getAllMovies = async (req, res) => {
   try {
-    const movies = await movieService.getAllMovies();
-    res.status(200).json({ success: true, data: movies });
+    let page = Number(req.query.page) || 1;
+    page = page < 1 ? 1 : page;
+    let limit = Number(req.query.limit) || 10;
+    limit = limit < 1 ? 1 : limit;
+    const { data, meta } = await movieService.getAllMovies(page, limit);
+    res.status(200).json({ success: true, data, meta });
   } catch (err) {
     res.status(500).json({ success: false, error: err.message });
   }

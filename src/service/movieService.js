@@ -1,9 +1,13 @@
 import Movie from "../database/movie.schema.js";
 
-export const getAllMovies = async () => {
+export const getAllMovies = async (page = 1, limit = 10) => {
   try {
-    const movies = await Movie.find();
-    return movies;
+    //pagination
+    const skip = (page - 1) * limit;
+    const  movies = await Movie.find().skip(skip).limit(limit);
+    // return movies;
+    const total = await Movie.countDocuments();
+    return { data: movies, meta: {page, limit, total }}
   } catch (err) {
     throw new Error(err.message);
   }
