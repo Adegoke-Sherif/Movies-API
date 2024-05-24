@@ -1,6 +1,5 @@
 import * as movieService from "../service/movieService.js";
 
-// Get all movies
 const getAllMovies = async (req, res) => {
   try {
     let page = Number(req.query.page) || 1;
@@ -44,7 +43,7 @@ const updateMovie = async (req, res) => {
     if (!movie) {
       return res.status(404).json({ success: false, error: "Movie not found" });
     }
-    res.status(200).json({ success: true, data: movie });
+    // res.status(200).json({ success: true, data: movie });
   } catch (err) {
     res.status(400).json({ success: false, error: err.message });
   }

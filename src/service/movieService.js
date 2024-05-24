@@ -1,4 +1,5 @@
 import Movie from "../database/movie.schema.js";
+import { ErrorWithStatus } from "../exceptions/error=with-status-exception.js";
 
 export const getAllMovies = async (page = 1, limit = 10) => {
   try {
@@ -9,10 +10,9 @@ export const getAllMovies = async (page = 1, limit = 10) => {
     const total = await Movie.countDocuments();
     return { data: movies, meta: {page, limit, total }}
   } catch (err) {
-    throw new Error(err.message);
+    throw new ErrorWithStatus("Movies not found", 404);
   }
 };
-
 export const getMovieById = async (id) => {
   try {
     const movie = await Movie.findById(id);
