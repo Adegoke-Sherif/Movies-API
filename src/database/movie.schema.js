@@ -26,15 +26,9 @@ const movieSchema = mongoose.Schema(
         type: Number,
         required: [true, "Release Year is required field!"]
       },
-      createdAt: {
-        type: Date,
-        default: Date.now
-        // default: Date.now()
-      }
     }, 
-    {
-      timestamps: true
-    }
+     
   );
   const Movie = mongoose.model("Movie", movieSchema);
+  
   export default Movie;

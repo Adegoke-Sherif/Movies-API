@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import movieRouter from "./routes/movie.routes.js"
 import userRouter from "./routes/user.router.js";
 import { connect } from "../src/database/connection.js";
+import authRouter from "./routes/auth.route.js";
 
 dotenv.config();
 const PORT = process.env.PORT || 3300;
@@ -13,6 +14,7 @@ const app = express();
 app.use(express.json());
 app.use("/movies", movieRouter)
 app.use("/user", userRouter)
+app.use("/auth", authRouter)
 
 app.get("/", (req, res) => {
   res.send("Hello World")
