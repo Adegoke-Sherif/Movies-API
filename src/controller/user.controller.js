@@ -11,6 +11,15 @@ export const create = async (req, res) => {
   }
 };
 
+export const getAllUsers = async (req, res) => {
+  try {
+    const users = await userService.getAllUsers();
+    res.json({ message: "Get all users", data: users})
+  }catch(error) {
+    res.status(500).json({ message: error.message })
+  }
+}
+
 export const findById = async (req, res) => {
   const { userId } = req.params;
   try {
